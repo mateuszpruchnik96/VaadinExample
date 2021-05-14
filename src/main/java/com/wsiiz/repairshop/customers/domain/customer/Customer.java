@@ -1,9 +1,7 @@
 package com.wsiiz.repairshop.customers.domain.customer;
 
-import static javax.persistence.InheritanceType.SINGLE_TABLE;
-
 import com.wsiiz.repairshop.foundation.domain.BaseEntity;
-import java.time.LocalDate;
+import com.wsiiz.repairshop.shared.domain.Address;
 import javax.persistence.AttributeOverride;
 import javax.persistence.AttributeOverrides;
 import javax.persistence.Column;
@@ -11,17 +9,16 @@ import javax.persistence.DiscriminatorColumn;
 import javax.persistence.DiscriminatorType;
 import javax.persistence.Entity;
 import javax.persistence.Inheritance;
-import lombok.AllArgsConstructor;
+import javax.persistence.InheritanceType;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
 @Entity
-@AllArgsConstructor
-@NoArgsConstructor
 @Data
 @EqualsAndHashCode(onlyExplicitlyIncluded = true, callSuper = true)
-@Inheritance(strategy = SINGLE_TABLE)
+@NoArgsConstructor
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @DiscriminatorColumn(name = "TYPE", discriminatorType = DiscriminatorType.STRING)
 public abstract class Customer extends BaseEntity {
 
@@ -41,4 +38,5 @@ public abstract class Customer extends BaseEntity {
   })
   Address correspondenceAddress;
 
+  public abstract String fullName();
 }

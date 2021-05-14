@@ -3,6 +3,8 @@ package com.wsiiz.repairshop.customers.domain.customer;
 import java.time.LocalDate;
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
@@ -19,4 +21,11 @@ public class Person extends Customer {
   LocalDate birthDate;
   String pesel;
 
+  @Enumerated(value = EnumType.STRING)
+  Sex sex;
+
+  @Override
+  public String fullName() {
+    return name + " " + surname;
+  }
 }

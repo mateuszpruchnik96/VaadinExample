@@ -14,7 +14,7 @@ public class ServiceService implements AbstractService<Service> {
   ServiceRepository serviceRepository;
 
   @Override
-  public Service add(Service service) {
+  public Service save(Service service) {
     service.setTasks(serviceFactory.switchInitialTasksPolicy(service).generateTasks(service));
     return serviceRepository.save(service);
   }

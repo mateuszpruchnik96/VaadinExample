@@ -39,7 +39,7 @@ public class ServicingTests {
 
     // when
 
-    Service s = serviceService.add(service);
+    Service s = serviceService.save(service);
     s = serviceRepository.getOne(s.getId());
 
     // then

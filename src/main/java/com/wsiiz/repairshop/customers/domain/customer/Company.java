@@ -16,7 +16,12 @@ import lombok.NoArgsConstructor;
 public class Company extends Customer {
 
   String name;
-  String regon;
-  @Enumerated(EnumType.STRING)
+
+  @Enumerated(value = EnumType.STRING)
   ActivityType activityType;
+
+  @Override
+  public String fullName() {
+    return name;
+  }
 }

@@ -48,7 +48,7 @@ public class ServiceController {
 
   @PostMapping("/services")
   public ResponseEntity<Service> addNew(@RequestBody Service service) {
-    return ResponseEntity.created(null).body(serviceService.add(service));
+    return ResponseEntity.created(null).body(serviceService.save(service));
   }
 
   @DeleteMapping("/services/{id}")
