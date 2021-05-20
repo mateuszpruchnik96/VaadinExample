@@ -2,7 +2,6 @@ package com.wsiiz.repairshop.enterprise.domain.branch;
 
 import com.wsiiz.repairshop.enterprise.domain.employee.Employee;
 import com.wsiiz.repairshop.foundation.domain.BaseEntity;
-import com.wsiiz.repairshop.security.domain.useraccount.UserRole;
 import com.wsiiz.repairshop.shared.domain.Address;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -26,3 +25,4 @@ public class Branch extends BaseEntity {
     @OneToMany(mappedBy = "branch", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     List<Employee> employees;
 }
+
