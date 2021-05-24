@@ -9,12 +9,13 @@ import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
 @Data
 @EqualsAndHashCode(onlyExplicitlyIncluded = true, callSuper = true)
-@NoArgsConstructor
 @AllArgsConstructor
 public class Branch extends BaseEntity {
     String name; //Nazwa
@@ -24,5 +25,12 @@ public class Branch extends BaseEntity {
 
     @OneToMany(mappedBy = "branch", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     List<Employee> employees;
+
+
+    Long MasterBranchId;
+
+    public Branch() {
+        this.employees = new ArrayList<>();
+    }
 }
 
