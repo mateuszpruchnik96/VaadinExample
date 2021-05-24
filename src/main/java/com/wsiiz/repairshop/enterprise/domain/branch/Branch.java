@@ -21,7 +21,7 @@ public class Branch extends BaseEntity {
     String name; //Nazwa
     Address address; //Adres
     @Enumerated(EnumType.STRING)
-    BranchActivityType branchActivityType;  //Typ działalności
+    BranchActivityType branchActivityType; //Typ działalności
 
     @OneToMany(mappedBy = "branch", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     List<Employee> employees;

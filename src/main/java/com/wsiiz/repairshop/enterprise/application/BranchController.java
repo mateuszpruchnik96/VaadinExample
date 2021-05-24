@@ -34,7 +34,9 @@ public class BranchController {
         @PostMapping("/branches")
         public ResponseEntity<Branch> addNew(@RequestBody Branch branch) {
             branch.getEmployees().forEach(r -> r.setBranch(branch));
-            return ResponseEntity.created(null).body(branchRepository.save(branch));
+            Branch savedBranch = branchRepository.save(branch);
+            savedBranch.getEmployees().forEach(r -> r.setBranchId(savedBranch.getId()));
+            return ResponseEntity.created(null).body(savedBranch);
         }
 
         @DeleteMapping("/branches/{id}")
