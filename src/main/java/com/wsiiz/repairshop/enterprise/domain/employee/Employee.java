@@ -10,11 +10,12 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Data
 @EqualsAndHashCode(onlyExplicitlyIncluded = true, callSuper = true)
-@NoArgsConstructor
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @DiscriminatorColumn(name = "TYPE", discriminatorType = DiscriminatorType.STRING)
 public class Employee extends BaseEntity {
@@ -31,4 +32,12 @@ public class Employee extends BaseEntity {
     @JoinColumn(name = "branch_id")
     @JsonIgnore
     Branch branch;
+
+    @OneToMany(mappedBy = "employee", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    List<EmployeeSkills> employeeSkills;
+
+    public Employee() {
+        this.employeeSkills = new ArrayList<>();
+    }
+
 }
