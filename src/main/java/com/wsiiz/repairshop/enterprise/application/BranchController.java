@@ -34,9 +34,10 @@ public class BranchController {
     }
 
     @GetMapping("/branches/master_branch_id")
-    public ResponseEntity<List<Branch>> getMany(@RequestParam(value = "masterBranchId", required = false) Long masterBranchId) {
+    public ResponseEntity<List<Branch>> getMany(@RequestParam(value = "masterBranchId", required = false) Long masterBranchId,
+                                                @RequestParam(value = "locality", required = false) String locality) {
         return ResponseEntity
-                .ok(branchRepository.findBySelectionCriteria(masterBranchId));
+                .ok(branchRepository.findBySelectionCriteria(masterBranchId, locality));
     }
 
     @PostMapping("/branches")
