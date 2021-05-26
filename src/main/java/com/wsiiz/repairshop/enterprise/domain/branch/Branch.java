@@ -26,7 +26,7 @@ public class Branch extends BaseEntity {
     @OneToMany(mappedBy = "branch", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     List<Employee> employees;
 
-    Long MasterBranchId;
+    Long masterBranchId;
 
     public Branch() {
         this.employees = new ArrayList<>();
