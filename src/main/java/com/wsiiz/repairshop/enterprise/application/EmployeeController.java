@@ -24,17 +24,12 @@ public class EmployeeController {
     return ResponseEntity.ok(employeeRepository.findAll());
   }
 
-  @GetMapping("/employees/{id}")
-  public ResponseEntity<Employee> getOne(@PathVariable("id") Long id) {
-
-    Optional<Employee> employee = employeeRepository.findById(id);
-
-    if (employee.isPresent()) {
-      return ResponseEntity.ok(employee.get());
-    } else {
-      return ResponseEntity.notFound().build();
-    }
+  @GetMapping("/employees/{id}") //wyszukanie pracownika po Id oddziału
+  public ResponseEntity<List<Employee>> getMany(@PathVariable("id") Long branchId)
+  {
+     return ResponseEntity.ok(employeeRepository.findByBranch_Id(branchId));
   }
+
 
   @PostMapping("/employees")
   public ResponseEntity<Employee> addNew(@RequestBody Employee employee) {

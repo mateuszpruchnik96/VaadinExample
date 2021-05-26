@@ -27,7 +27,6 @@ public class Employee extends BaseEntity {
 
     @Transient
     Long branchId;
-
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "branch_id")
     @JsonIgnore
