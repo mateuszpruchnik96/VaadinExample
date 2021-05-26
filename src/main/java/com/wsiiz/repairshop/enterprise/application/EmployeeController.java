@@ -40,8 +40,8 @@ public class EmployeeController {
   public ResponseEntity<Employee> addNew(@RequestBody Employee employee) {
     if (employee.getBranchId() != null) {
       employee.setBranch(branchRepository.getOne(employee.getBranchId()));
-    }
-    return ResponseEntity.created(null).body(employeeRepository.save(employee));
+      return ResponseEntity.created(null).body(employeeRepository.save(employee));
+    } else return ResponseEntity.notFound().build();
   }
 
   @DeleteMapping("/employees/{id}")
